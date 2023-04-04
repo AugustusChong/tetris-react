@@ -1,5 +1,9 @@
 @use "root";
 
+* {
+  box-sizing: border-box;
+}
+
 .color-0 {
   background-color: var(--color-0);
 }
@@ -41,4 +45,11 @@
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
 }
