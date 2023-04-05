@@ -53,3 +53,9 @@
   grid-gap: 0;
   align-self: flex-start;
 }
+
+.next-block {
+  display: grid;
+  grid-template-columns: repeat(4, var(--tile-size));
+  align-self: flex-start;
+}
