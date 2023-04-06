@@ -1,19 +1,18 @@
-.score-board {
-  grid-area: bl;
+.controls {
+  grid-area: bc;
+  display: flex;
+  flex-direction: row;
 }
 
-.score-board-buttons {
-  grid-area: br;
-}
-
-.score-board-button {
+.control-button {
+  --size: calc(var(--tile-size) * 2.5);
+  width: var(--size);
+  height: var(--size);
+  text-align: center;
   display: block;
-  padding: 1em;
   border-width: 5px;
   border-top-color: var(--button-color-t);
   border-left-color: var(--button-color-l);
   border-right-color: var(--button-color-r);
   border-bottom-color: var(--button-color-b);
 }
-
-/*# sourceMappingURL=score-board.css.map */
