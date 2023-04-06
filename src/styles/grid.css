@@ -74,12 +74,14 @@
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
+  grid-area: c;
 }
 
 .next-block {
   display: grid;
   grid-template-columns: repeat(4, var(--tile-size));
   align-self: flex-start;
+  grid-area: r;
 }
 
 /*# sourceMappingURL=grid.css.map */

@@ -3,13 +3,16 @@
   --col-center: calc(var(--tile-size) * 10);
   --grid-height: calc(var(--tile-size) * 18);
   text-align: center;
-  width: calc(var(--tile-size) * 20);
+  width: calc(var(--tile-size) * (4 + 1 + 10 + 1 + 4));
   margin: auto;
   display: grid;
   grid-gap: var(--tile-size) var(--tile-size);
   grid-template-columns: var(--col-side) var(--col-center) var(--col-side);
   grid-template-rows: 100px var(--grid-height) 100px;
-  grid-template-areas: "h h h" "l c r" "bl b br";
+  grid-template-areas:
+    "h h h"
+    "l c r"
+    "bl b br";
 }
 
 .App-logo {
@@ -22,6 +25,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -46,5 +50,3 @@
     transform: rotate(360deg);
   }
 }
-
-/*# sourceMappingURL=App.css.map */

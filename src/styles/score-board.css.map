@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["root.scss","score-board.scss"],"names":[],"mappings":"AAAA;EACE;EAEA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;;;ACvBF;EACE;EACA;EACA;EACA;EACA;EACA;EACA","file":"score-board.css"}
+{"version":3,"sourceRoot":"","sources":["root.scss","score-board.scss"],"names":[],"mappings":"AAAA;EACE;EAEA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;EAEA;EACA;EACA;EACA;;;ACvBF;EACE;;;AAGF;EACE;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA","file":"score-board.css"}

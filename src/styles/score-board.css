@@ -22,6 +22,14 @@
   --border-width: 5px;
 }
 
+.score-board {
+  grid-area: bl;
+}
+
+.score-board-buttons {
+  grid-area: br;
+}
+
 .score-board-button {
   display: block;
   padding: 1em;
