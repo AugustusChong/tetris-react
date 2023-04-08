@@ -1,3 +1,5 @@
+import { defaultState } from "../utils";
+
 import {
   MOVE_RIGHT,
   MOVE_LEFT,
@@ -9,7 +11,7 @@ import {
   RESTART,
 } from "../actions";
 
-const gameReducer = (state = {}, action) => {
+const gameReducer = (state = defaultState(), action) => {
   switch (action.type) {
     case MOVE_RIGHT:
       return state;
