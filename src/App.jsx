@@ -1,5 +1,6 @@
 import React from "react";
-import { createStore } from "redux";
+// import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import reducers from "./reducers";
 import "./App.css";
@@ -9,7 +10,10 @@ import ScoreBoard from "./components/ScoreBoard/ScoreBoard";
 import Controls from "./components/Controls/Controls";
 import MessagePopup from "./components/MessagePopup/MessagePopup";
 
-const store = createStore(reducers);
+// const store = createStore(reducers);
+const store = configureStore({
+  reducer: reducers,
+});
 
 function App() {
   return (
