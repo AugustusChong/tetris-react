@@ -4,8 +4,9 @@ import GridSquare from "../GridSquare/GridSquare";
 import { shapes } from "../../utils";
 
 export default function GridBoard(props) {
-  const game = useSelector((state) => state.game);
-  const { grid, shape, rotation, x, y, isRunning, speed } = game;
+  const { grid, shape, rotation, x, y, isRunning, speed } = useSelector(
+    (state) => state.game
+  );
   const block = shapes[shape][rotation];
   const blockColor = shape;
   const gridSquares = grid.map((rowArray, row) => {
