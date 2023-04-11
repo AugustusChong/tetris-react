@@ -28,7 +28,6 @@ export default function GridBoard(props) {
       return <GridSquare key={k} color={color} />;
     });
   });
-  console.log(props, isRunning, speed);
 
   return <div className="grid-board">{gridSquares}</div>;
 }
