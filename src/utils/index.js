@@ -13,6 +13,8 @@ export const gridDefault = () => {
       array[row].push(0);
     }
   }
+
+  return array;
 };
 
 export const shapes = [
