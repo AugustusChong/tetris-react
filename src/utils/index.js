@@ -187,6 +187,41 @@ export const randomShape = () => {
   return random(1, shapes.length - 1);
 };
 
+export const nextRotation = (shape, rotation) => {
+  return (rotation + 1) % shapes[shape].length;
+};
+
+export const canMoveTo = (shape, grid, x, y, rotation) => {
+  const currentShape = shapes[shape][rotation];
+
+  for (let row = 0; row < currentShape.length; row++) {
+    for (let col = 0; col < currentShape[row].length; col++) {
+      if (currentShape[row][col] !== 0) {
+        const proposedX = col + x;
+        const proposedY = row + y;
+
+        if (proposedY < 0) {
+          continue;
+        }
+
+        const possibleRow = grid[proposedY];
+
+        if (possibleRow) {
+          if (
+            possibleRow[proposedX] === undefined ||
+            possibleRow[proposedX] !== 0
+          ) {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+};
+
 export const defaultState = () => {
   return {
     grid: gridDefault(),
