@@ -1,4 +1,11 @@
-import { defaultState, nextRotation, canMoveTo } from "../utils";
+import {
+  defaultState,
+  nextRotation,
+  canMoveTo,
+  addBlockToGrid,
+  checkRows,
+  randomShape,
+} from "../utils";
 
 import {
   MOVE_RIGHT,
@@ -41,7 +48,30 @@ const gameReducer = (state = defaultState(), action) => {
       }
       return state;
     case MOVE_DOWN:
-      return state;
+      const potentialY = y + 1;
+      if (canMoveTo(shape, grid, x, potentialY, rotation)) {
+        return {
+          ...state,
+          y: potentialY,
+        };
+      }
+      const newGrid = addBlockToGrid(shape, grid, x, y, rotation);
+      const newState = defaultState();
+      newState.grid = newGrid;
+      newState.shape = nextShape;
+      newState.nextShape = randomShape();
+      newState.score = score;
+      newState.isRunning = isRunning;
+      if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
+        console.log("Game over");
+        newState.shape = 0;
+        return {
+          ...newState,
+          gameOver: true,
+        };
+      }
+      newState.score = score + checkRows(newGrid);
+      return newState;
     case PAUSE:
       return state;
     case RESUME:
