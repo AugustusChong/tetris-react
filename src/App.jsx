@@ -13,6 +13,11 @@ import MessagePopup from "./components/MessagePopup/MessagePopup";
 // const store = createStore(reducers);
 const store = configureStore({
   reducer: reducers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 });
 
 function App() {

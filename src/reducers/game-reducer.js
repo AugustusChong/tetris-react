@@ -55,21 +55,34 @@ const gameReducer = (state = defaultState(), action) => {
           y: potentialY,
         };
       }
-      const newGrid = addBlockToGrid(shape, grid, x, y, rotation);
-      const newState = defaultState();
-      newState.grid = newGrid;
-      newState.shape = nextShape;
-      newState.nextShape = randomShape();
-      newState.score = score;
-      newState.isRunning = isRunning;
-      if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
-        console.log("Game over");
+      const obj = addBlockToGrid(shape, grid, x, y, rotation);
+      const newGrid = obj.grid;
+      const gameOver = obj.gameOver;
+
+      if (gameOver) {
+        const newState = { ...state };
         newState.shape = 0;
+        newState.grid = newGrid;
         return {
-          ...newState,
+          ...state,
           gameOver: true,
         };
       }
+
+      const newState = defaultState();
+      newState.grid = newGrid;
+      newState.shape = nextShape;
+      // newState.nextShape = randomShape();
+      newState.score = score;
+      newState.isRunning = isRunning;
+      // if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
+      //   console.log("Game over");
+      //   newState.shape = 0;
+      //   return {
+      //     ...newState,
+      //     gameOver: true,
+      //   };
+      // }
       newState.score = score + checkRows(newGrid);
       return newState;
     case PAUSE:

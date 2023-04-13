@@ -5,13 +5,18 @@ import "../../styles/controls.css";
 
 export default function Controls(props) {
   const dispatch = useDispatch();
-  const isRunning = useSelector((state) => state.isRunning);
+  const isRunning = useSelector((state) => state.game.isRunning);
+  const gameOver = useSelector((state) => state.game.gameOver);
 
   return (
     <div className="controls">
       <button
+        disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
+          if (!isRunning || gameOver) {
+            return;
+          }
           dispatch(moveLeft());
         }}
       >
@@ -19,8 +24,12 @@ export default function Controls(props) {
       </button>
 
       <button
+        disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
+          if (!isRunning || gameOver) {
+            return;
+          }
           dispatch(moveRight());
         }}
       >
@@ -28,8 +37,12 @@ export default function Controls(props) {
       </button>
 
       <button
+        disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
+          if (!isRunning || gameOver) {
+            return;
+          }
           dispatch(rotate());
         }}
       >
@@ -37,8 +50,12 @@ export default function Controls(props) {
       </button>
 
       <button
+        disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
+          if (!isRunning || gameOver) {
+            return;
+          }
           dispatch(moveDown());
         }}
       >

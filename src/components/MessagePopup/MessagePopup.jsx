@@ -3,20 +3,21 @@ import { useSelector } from "react-redux";
 import "../../styles/message.css";
 
 export default function MessagePopup(props) {
-  const { isRunning, gameOver } = useSelector((state) => state.game);
+  const isRunning = useSelector((state) => state.game.isRunning);
+  const gameOver = useSelector((state) => state.game.gameOver);
   let message = "";
-  let messageClass = "message-popup";
+  let isHidden = "hidden";
 
-  if (isRunning || (!isRunning && !gameOver)) {
-    messageClass += " hidden";
+  if (gameOver) {
+    message = "Game Over";
+    isHidden = "";
   } else if (!isRunning) {
     message = "Paused";
-  } else if (gameOver) {
-    message = "Game Over";
+    isHidden = "";
   }
 
   return (
-    <div className={messageClass}>
+    <div className={`message-popup ${isHidden}`}>
       <h1>{message}</h1>
     </div>
   );
