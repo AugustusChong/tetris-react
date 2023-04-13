@@ -72,17 +72,8 @@ const gameReducer = (state = defaultState(), action) => {
       const newState = defaultState();
       newState.grid = newGrid;
       newState.shape = nextShape;
-      // newState.nextShape = randomShape();
       newState.score = score;
       newState.isRunning = isRunning;
-      // if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
-      //   console.log("Game over");
-      //   newState.shape = 0;
-      //   return {
-      //     ...newState,
-      //     gameOver: true,
-      //   };
-      // }
       newState.score = score + checkRows(newGrid);
       return newState;
     case PAUSE:
@@ -92,7 +83,7 @@ const gameReducer = (state = defaultState(), action) => {
     case GAME_OVER:
       return state;
     case RESTART:
-      return state;
+      return defaultState();
     default:
       return state;
   }
