@@ -1,5 +1,3 @@
-@use "../src/styles/root.scss";
-
 .App {
   --col-side: calc((var(--tile-size) * 4) + 4px);
   --col-center: calc((var(--tile-size) * 10) + 10px);
