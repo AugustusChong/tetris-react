@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pause, resume, restart } from "../../actions";
-import "../../styles/score-board.css";
+import "../../styles/game.css";
 
 export default function ScoreBoard(props) {
   const dispatch = useDispatch();

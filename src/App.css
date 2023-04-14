@@ -11,7 +11,7 @@
   --color-4: #cc00ff;
   --color-5: #00ff00;
   --color-6: #66ccff;
-  --color-7: #ff0000;
+  --color-7: #fde100;
   --button-color-t: #c8c8c8;
   --button-color-r: #969696;
   --button-color-b: #787878;
@@ -23,11 +23,11 @@
 }
 
 .App {
-  --col-side: calc(var(--tile-size) * 4);
-  --col-center: calc(var(--tile-size) * 10);
-  --grid-height: calc(var(--tile-size) * 18);
+  --col-side: calc((var(--tile-size) * 4) + 4px);
+  --col-center: calc((var(--tile-size) * 10) + 10px);
+  --grid-height: calc((var(--tile-size) * 18) + 15px);
   text-align: center;
-  width: calc(var(--tile-size) * 20);
+  width: calc(var(--tile-size) * 21);
   margin: auto;
   display: grid;
   grid-gap: var(--tile-size) var(--tile-size);

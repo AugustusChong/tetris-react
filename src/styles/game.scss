@@ -1,0 +1,128 @@
+// @use "root";
+
+* {
+  box-sizing: border-box;
+}
+
+.color-0 {
+  background-color: var(--color-0);
+}
+
+.color-1 {
+  background-color: var(--color-1);
+}
+
+.color-2 {
+  background-color: var(--color-2);
+}
+
+.color-3 {
+  background-color: var(--color-3);
+}
+
+.color-4 {
+  background-color: var(--color-4);
+}
+
+.color-5 {
+  background-color: var(--color-5);
+}
+
+.color-6 {
+  background-color: var(--color-6);
+}
+
+.color-7 {
+  background-color: var(--color-7);
+}
+
+.grid-square {
+  border-style: groove;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-width: 2px;
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color);
+  border-radius: 10%;
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  gap: 1px;
+  align-self: flex-start;
+  grid-area: c;
+}
+
+.next-block {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, var(--tile-size));
+  align-self: flex-start;
+  grid-area: r;
+}
+
+.controls {
+  grid-area: bc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.control-button {
+  --size: calc(var(--tile-size) * 2.5);
+  width: var(--size);
+  height: var(--size);
+  text-align: center;
+  display: block;
+  border-style: groove;
+  border-radius: 10%;
+  border-width: 2px;
+  border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b);
+}
+
+.score-board {
+  grid-area: bl;
+  display: flex;
+  flex-direction: column;
+}
+
+.score-board-buttons {
+  grid-area: br;
+  display: flex;
+  flex-direction: column;
+}
+
+.score-board-button {
+  display: block;
+  width: 80px;
+  padding: 1em;
+  margin-bottom: 3px;
+  border-style: groove;
+  border-radius: 10%;
+  border-width: 2px;
+  border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b);
+}
+
+.message-popup {
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: translate(54%, 130%);
+  width: 200px;
+  height: 100px;
+  background-color: #ffffff80;
+  text-align: center;
+}
+
+.message-popup.hidden {
+  display: none;
+}

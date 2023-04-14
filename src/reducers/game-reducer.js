@@ -4,7 +4,6 @@ import {
   canMoveTo,
   addBlockToGrid,
   checkRows,
-  randomShape,
 } from "../utils";
 
 import {

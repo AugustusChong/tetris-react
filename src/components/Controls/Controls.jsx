@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { moveLeft, moveRight, rotate, moveDown } from "../../actions";
-import "../../styles/controls.css";
+import "../../styles/game.css";
 
 export default function Controls(props) {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export default function Controls(props) {
   return (
     <div className="controls">
       <button
+        id="leftButton"
         disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
@@ -24,6 +25,7 @@ export default function Controls(props) {
       </button>
 
       <button
+        id="rightButton"
         disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
@@ -37,6 +39,7 @@ export default function Controls(props) {
       </button>
 
       <button
+        id="rotateButton"
         disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {
@@ -50,6 +53,7 @@ export default function Controls(props) {
       </button>
 
       <button
+        id="downButton"
         disabled={!isRunning || gameOver}
         className="control-button"
         onClick={(e) => {

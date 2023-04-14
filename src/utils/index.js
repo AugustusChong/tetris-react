@@ -86,16 +86,16 @@ export const shapes = [
     ],
 
     [
-      [1, 1, 0, 0],
-      [0, 1, 0, 0],
-      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
       [0, 0, 0, 0],
     ],
 
     [
+      [0, 0, 0, 0],
       [0, 0, 1, 0],
       [1, 1, 1, 0],
-      [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
 
@@ -110,9 +110,9 @@ export const shapes = [
   // J
   [
     [
+      [0, 0, 0, 0],
       [1, 0, 0, 0],
       [1, 1, 1, 0],
-      [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
 
@@ -131,9 +131,9 @@ export const shapes = [
     ],
 
     [
-      [0, 1, 0, 0],
-      [0, 1, 0, 0],
-      [1, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
+      [0, 1, 1, 0],
       [0, 0, 0, 0],
     ],
   ],
@@ -175,9 +175,9 @@ export const shapes = [
   // O
   [
     [
-      [0, 1, 1, 0],
-      [0, 1, 1, 0],
       [0, 0, 0, 0],
+      [0, 1, 1, 0],
+      [0, 1, 1, 0],
       [0, 0, 0, 0],
     ],
   ],
@@ -193,28 +193,22 @@ export const nextRotation = (shape, rotation) => {
 
 export const canMoveTo = (shape, grid, x, y, rotation) => {
   const currentShape = shapes[shape][rotation];
+  const gridWidth = grid[0].length - 1;
+  const gridHeight = grid.length - 1;
 
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
       if (currentShape[row][col] !== 0) {
         const proposedX = col + x;
         const proposedY = row + y;
-
-        if (proposedY < 0) {
-          continue;
-        }
-
         const possibleRow = grid[proposedY];
 
-        if (possibleRow) {
-          if (
-            possibleRow[proposedX] === undefined ||
-            possibleRow[proposedX] !== 0
-          ) {
+        if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
+          return false;
+        } else if (possibleRow !== undefined) {
+          if (possibleRow[proposedX] !== 0) {
             return false;
           }
-        } else {
-          return false;
         }
       }
     }
@@ -269,5 +263,6 @@ export const defaultState = () => {
     score: 0,
     speed: 1000,
     gameOver: false,
+    rowsCompleted: 0,
   };
 };
