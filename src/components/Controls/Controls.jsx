@@ -11,15 +11,19 @@ export default function Controls(props) {
   const handleKeyPress = (e) => {
     switch (e.keyCode) {
       case 37:
+        e.preventDefault();
         document.getElementById("leftButton").click();
         break;
       case 38:
+        e.preventDefault();
         document.getElementById("rotateButton").click();
         break;
       case 39:
+        e.preventDefault();
         document.getElementById("rightButton").click();
         break;
       case 40:
+        e.preventDefault();
         document.getElementById("downButton").click();
         break;
       default:
