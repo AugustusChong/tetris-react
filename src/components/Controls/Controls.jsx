@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { moveLeft, moveRight, rotate, moveDown } from "../../actions";
 import "../../styles/game.css";
