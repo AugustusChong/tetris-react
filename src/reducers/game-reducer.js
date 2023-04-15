@@ -59,7 +59,7 @@ const gameReducer = (state = defaultState(), action) => {
       const gameOver = obj.gameOver;
 
       if (gameOver) {
-        const newState = { ...state };
+        let newState = { ...state };
         newState.shape = 0;
         newState.grid = newGrid;
         return {
@@ -68,7 +68,7 @@ const gameReducer = (state = defaultState(), action) => {
         };
       }
 
-      const newState = defaultState();
+      let newState = defaultState();
       newState.grid = newGrid;
       newState.shape = nextShape;
       newState.score = score;
