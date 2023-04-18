@@ -1,3 +1,3 @@
 # Tetris React
 
-## Tetris game made with React Redux
+### Tetris game made with React Redux
