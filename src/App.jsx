@@ -18,6 +18,7 @@ const store = configureStore({
       immutableCheck: false,
       serializableCheck: false,
     }),
+  devtools: true,
 });
 
 function App() {

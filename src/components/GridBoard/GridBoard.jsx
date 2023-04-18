@@ -10,9 +10,8 @@ export default function GridBoard(props) {
   const progressTimeRef = useRef(0);
   const dispatch = useDispatch();
 
-  const { grid, shape, rotation, x, y, isRunning, speed } = useSelector(
-    (state) => state.game
-  );
+  const { grid, shape, rotation, x, y, isRunning, speed, gameOver } =
+    useSelector((state) => state.game);
 
   const block = shapes[shape][rotation];
   const blockColor = shape;
@@ -40,7 +39,7 @@ export default function GridBoard(props) {
 
   const update = (time) => {
     requestRef.current = requestAnimationFrame(update);
-    if (!isRunning) {
+    if (!isRunning || gameOver) {
       return;
     }
     if (!lastUpdateTimeRef.current) {
@@ -58,7 +57,7 @@ export default function GridBoard(props) {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(update);
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isRunning]);
+  }, [isRunning, gameOver]);
 
   return <div className="grid-board">{gridSquares}</div>;
 }
