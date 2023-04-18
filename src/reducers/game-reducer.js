@@ -59,22 +59,20 @@ const gameReducer = (state = defaultState(), action) => {
       const gameOver = obj.gameOver;
 
       if (gameOver) {
-        let newState = { ...state };
-        newState.shape = 0;
-        newState.grid = newGrid;
         return {
           ...state,
+          shape: 0,
           gameOver: true,
+          grid: newGrid,
         };
+      } else {
+        let newState = defaultState();
+        newState.grid = newGrid;
+        newState.shape = nextShape;
+        newState.isRunning = isRunning;
+        newState.score = score + checkRows(newGrid);
+        return newState;
       }
-
-      let newState = defaultState();
-      newState.grid = newGrid;
-      newState.shape = nextShape;
-      newState.score = score;
-      newState.isRunning = isRunning;
-      newState.score = score + checkRows(newGrid);
-      return newState;
     case PAUSE:
       return { ...state, isRunning: false };
     case RESUME:
