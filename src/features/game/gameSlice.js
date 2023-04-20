@@ -60,7 +60,9 @@ export const gameSlice = createSlice({
         return state;
       }
 
-      state.score += checkRows(newGrid);
+      const { score, completedRows } = checkRows(newGrid);
+      state.score += score;
+      state.rowsCompleted += completedRows;
       return state;
     },
     rotate: (state, action) => {

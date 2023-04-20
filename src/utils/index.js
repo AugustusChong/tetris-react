@@ -248,7 +248,9 @@ export const checkRows = (grid) => {
       grid.unshift(Array(10).fill(0));
     }
   }
-  return points[completedRows];
+
+  const score = points[completedRows];
+  return { score, completedRows };
 };
 
 export const defaultState = () => {
