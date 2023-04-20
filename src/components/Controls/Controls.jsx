@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { moveLeft, moveRight, rotate, moveDown } from "../../actions";
 import {
   moveLeft,
   moveRight,
