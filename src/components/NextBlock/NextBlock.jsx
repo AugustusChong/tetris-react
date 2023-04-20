@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import GridSquare from "../GridSquare/GridSquare";
 import { shapes } from "../../utils";
+import GridSquare from "../GridSquare/GridSquare";
 
 export default function NextBlock(props) {
   const nextShape = useSelector((state) => state.game.nextShape);

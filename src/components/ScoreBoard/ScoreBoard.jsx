@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { pause, resume, restart } from "../../actions";
-import { pause, resume, restart } from "../../reducers/gameSlice";
+import { run, restart } from "../../features/game/gameSlice";
 import "../../styles/game.css";
+// import { pause, resume, restart } from "../../actions";
 
 export default function ScoreBoard(props) {
   const dispatch = useDispatch();
@@ -22,9 +22,9 @@ export default function ScoreBoard(props) {
               return;
             }
             if (isRunning) {
-              dispatch(pause());
+              dispatch(run(false));
             } else {
-              dispatch(resume());
+              dispatch(run(true));
             }
           }}
         >

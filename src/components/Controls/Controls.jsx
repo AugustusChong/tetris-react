@@ -6,7 +6,7 @@ import {
   moveRight,
   rotate,
   moveDown,
-} from "../../reducers/gameSlice";
+} from "../../features/game/gameSlice";
 import "../../styles/game.css";
 
 export default function Controls(props) {
@@ -54,7 +54,7 @@ export default function Controls(props) {
           if (!isRunning || gameOver) {
             return;
           }
-          dispatch(moveLeft());
+          dispatch(moveLeft(1));
         }}
       >
         Left
@@ -68,7 +68,7 @@ export default function Controls(props) {
           if (!isRunning || gameOver) {
             return;
           }
-          dispatch(moveRight());
+          dispatch(moveRight(1));
         }}
       >
         Right
@@ -96,7 +96,7 @@ export default function Controls(props) {
           if (!isRunning || gameOver) {
             return;
           }
-          dispatch(moveDown());
+          dispatch(moveDown(1));
         }}
       >
         Down

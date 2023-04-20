@@ -1,47 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { produce } from "immer";
 import {
+  gridDefault,
   defaultState,
   canMoveTo,
   nextRotation,
   addBlockToGrid,
   checkRows,
   randomShape,
-} from "../utils";
+} from "../../utils";
 
-const gameSlice = createSlice({
+export const gameSlice = createSlice({
   name: "game",
   initialState: defaultState(),
   reducers: {
-    moveRight: (state) => {
+    run: (state, action) => {
+      state.isRunning = action.payload;
+    },
+    restart: (state, action) => {
+      return defaultState();
+    },
+    moveRight: (state, action) => {
       const { shape, grid, x, y, rotation } = state;
       if (canMoveTo(shape, grid, x + 1, y, rotation)) {
         return {
           ...state,
-          x: x + 1,
+          x: x + action.payload,
         };
       }
     },
-    moveLeft: (state) => {
+    moveLeft: (state, action) => {
       const { shape, grid, x, y, rotation } = state;
       if (canMoveTo(shape, grid, x - 1, y, rotation)) {
         return {
           ...state,
-          x: x - 1,
+          x: x - action.payload,
         };
       }
     },
-    rotate: (state) => {
-      const { shape, grid, x, y, rotation } = state;
-      const newRotation = nextRotation(shape, rotation);
-      if (canMoveTo(shape, grid, x, y, newRotation)) {
-        return {
-          ...state,
-          rotation: newRotation,
-        };
-      }
-    },
-    moveDown: (state) => {
+    moveDown: (state, action) => {
+      console.log(state);
       const {
         shape,
         grid,
@@ -54,7 +52,7 @@ const gameSlice = createSlice({
         speed,
         rowsCompleted,
       } = state;
-      const potentialY = y + 1;
+      const potentialY = y + action.payload;
 
       if (canMoveTo(shape, grid, x, potentialY, rotation)) {
         return {
@@ -90,6 +88,7 @@ const gameSlice = createSlice({
         draftState.shape = nextShape;
         draftState.isRunning = isRunning;
         draftState.score = score + checkRows(newGrid);
+        console.log(draftState);
       });
 
       // return {
@@ -107,30 +106,20 @@ const gameSlice = createSlice({
       //   rowsCompleted: rowsCompleted + 1,
       // };
     },
-    pause: (state) => {
-      state.isRunning = false;
-    },
-    resume: (state) => {
-      state.isRunning = true;
-    },
-    gameOver: (state) => {
-      state.gameOver = true;
-    },
-    restart: () => {
-      return defaultState();
+    rotate: (state, action) => {
+      const { shape, grid, x, y, rotation } = state;
+      const newRotation = nextRotation(shape, rotation);
+      if (canMoveTo(shape, grid, x, y, newRotation)) {
+        return {
+          ...state,
+          rotation: newRotation,
+        };
+      }
     },
   },
 });
 
-export const {
-  moveRight,
-  moveLeft,
-  rotate,
-  moveDown,
-  pause,
-  resume,
-  gameOver,
-  restart,
-} = gameSlice.actions;
+export const { moveRight, moveLeft, rotate, moveDown, run, restart } =
+  gameSlice.actions;
 
 export default gameSlice.reducer;

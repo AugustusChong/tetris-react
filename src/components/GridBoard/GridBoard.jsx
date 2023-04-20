@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { shapes } from "../../utils";
+import { moveDown } from "../../features/game/gameSlice";
 import GridSquare from "../GridSquare/GridSquare";
 // import { moveDown } from "../../actions";
-import { moveDown } from "../../reducers/gameSlice";
-import { shapes } from "../../utils";
 
 export default function GridBoard(props) {
   const requestRef = useRef();
@@ -49,7 +49,7 @@ export default function GridBoard(props) {
     const deltaTime = time - lastUpdateTimeRef.current;
     progressTimeRef.current += deltaTime;
     if (progressTimeRef.current > speed) {
-      dispatch(moveDown());
+      dispatch(moveDown(1));
       progressTimeRef.current = 0;
     }
     lastUpdateTimeRef.current = time;
