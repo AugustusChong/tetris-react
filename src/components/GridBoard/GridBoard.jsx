@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { shapes } from "../../utils";
 import { moveDown } from "../../features/game/gameSlice";
 import GridSquare from "../GridSquare/GridSquare";
-// import { moveDown } from "../../actions";
 
-export default function GridBoard(props) {
+export default function GridBoard() {
   const requestRef = useRef();
   const lastUpdateTimeRef = useRef(0);
   const progressTimeRef = useRef(0);
