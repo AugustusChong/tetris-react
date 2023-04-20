@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridSquare from "../GridSquare/GridSquare";
-import { moveDown } from "../../actions";
+// import { moveDown } from "../../actions";
+import { moveDown } from "../../reducers/gameSlice";
 import { shapes } from "../../utils";
 
 export default function GridBoard(props) {
@@ -57,7 +58,7 @@ export default function GridBoard(props) {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(update);
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isRunning, gameOver]);
+  }, [isRunning]);
 
   return <div className="grid-board">{gridSquares}</div>;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { pause, resume, restart } from "../../actions";
+// import { pause, resume, restart } from "../../actions";
+import { pause, resume, restart } from "../../reducers/gameSlice";
 import "../../styles/game.css";
 
 export default function ScoreBoard(props) {
