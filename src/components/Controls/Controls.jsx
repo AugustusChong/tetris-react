@@ -11,8 +11,8 @@ import "../../styles/game.css";
 
 export default function Controls(props) {
   const dispatch = useDispatch();
-  const isRunning = useSelector((state) => state.game.isRunning);
-  const gameOver = useSelector((state) => state.game.gameOver);
+  const isRunning = useSelector((state) => state.isRunning);
+  const gameOver = useSelector((state) => state.gameOver);
 
   const handleKeyPress = (e) => {
     switch (e.keyCode) {

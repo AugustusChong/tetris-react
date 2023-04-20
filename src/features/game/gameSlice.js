@@ -39,7 +39,6 @@ export const gameSlice = createSlice({
       }
     },
     moveDown: (state, action) => {
-      console.log(state);
       const {
         shape,
         grid,
@@ -88,7 +87,6 @@ export const gameSlice = createSlice({
         draftState.shape = nextShape;
         draftState.isRunning = isRunning;
         draftState.score = score + checkRows(newGrid);
-        console.log(draftState);
       });
 
       // return {

@@ -12,7 +12,7 @@ export default function GridBoard(props) {
   const dispatch = useDispatch();
 
   const { grid, shape, rotation, x, y, isRunning, speed, gameOver } =
-    useSelector((state) => state.game);
+    useSelector((state) => state);
 
   const block = shapes[shape][rotation];
   const blockColor = shape;
@@ -32,9 +32,9 @@ export default function GridBoard(props) {
         color = block[blockY][blockX] === 0 ? color : blockColor;
       }
 
-      const k = row * grid[0].length + col;
+      const key = row * grid[0].length + col;
 
-      return <GridSquare key={k} color={color} />;
+      return <GridSquare key={key} color={color} />;
     });
   });
 

@@ -6,7 +6,7 @@ import "../../styles/game.css";
 
 export default function ScoreBoard(props) {
   const dispatch = useDispatch();
-  const { score, isRunning, gameOver } = useSelector((state) => state.game);
+  const { score, isRunning, gameOver } = useSelector((state) => state);
 
   return (
     <React.Fragment>
