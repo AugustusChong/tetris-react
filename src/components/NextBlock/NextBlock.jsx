@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { shapes } from "../../utils";
 import GridSquare from "../GridSquare/GridSquare";
 
-export default function NextBlock(props) {
+export default function NextBlock() {
   const nextShape = useSelector((state) => state.nextShape);
   const tetrominoe = shapes[nextShape][0];
 
