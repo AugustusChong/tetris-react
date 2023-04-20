@@ -2,9 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { run, restart } from "../../features/game/gameSlice";
 import "../../styles/game.css";
-// import { pause, resume, restart } from "../../actions";
 
-export default function ScoreBoard(props) {
+export default function ScoreBoard() {
   const dispatch = useDispatch();
   const { score, isRunning, gameOver } = useSelector((state) => state);
 
