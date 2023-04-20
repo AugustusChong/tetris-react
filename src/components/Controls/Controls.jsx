@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   moveLeft,
   moveRight,
-  rotate,
   moveDown,
+  rotate,
 } from "../../features/game/gameSlice";
 import "../../styles/game.css";
 
-export default function Controls(props) {
+export default function Controls() {
   const dispatch = useDispatch();
-  const isRunning = useSelector((state) => state.isRunning);
-  const gameOver = useSelector((state) => state.gameOver);
+  const { isRunning, gameOver } = useSelector((state) => state);
 
   const handleKeyPress = (e) => {
     switch (e.keyCode) {
