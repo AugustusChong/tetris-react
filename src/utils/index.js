@@ -193,22 +193,28 @@ export const nextRotation = (shape, rotation) => {
 
 export const canMoveTo = (shape, grid, x, y, rotation) => {
   const currentShape = shapes[shape][rotation];
-  const gridWidth = grid[0].length - 1;
-  const gridHeight = grid.length - 1;
 
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
       if (currentShape[row][col] !== 0) {
         const proposedX = col + x;
         const proposedY = row + y;
+
+        if (proposedY < 0) {
+          continue;
+        }
+
         const possibleRow = grid[proposedY];
 
-        if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
-          return false;
-        } else if (possibleRow !== undefined) {
-          if (possibleRow[proposedX] !== 0) {
+        if (possibleRow) {
+          if (
+            possibleRow[proposedX] === undefined ||
+            possibleRow[proposedX] !== 0
+          ) {
             return false;
           }
+        } else {
+          return false;
         }
       }
     }
@@ -217,9 +223,9 @@ export const canMoveTo = (shape, grid, x, y, rotation) => {
 };
 
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
-  let blockOffGrid = false;
+  let gameOver = false;
   const block = shapes[shape][rotation];
-  let newGrid = [...grid];
+  const newGrid = [...grid];
 
   for (let row = 0; row < block.length; row++) {
     for (let col = 0; col < block[row].length; col++) {
@@ -227,14 +233,14 @@ export const addBlockToGrid = (shape, grid, x, y, rotation) => {
         const yIndex = row + y;
 
         if (yIndex < 0) {
-          blockOffGrid = true;
+          gameOver = true;
         } else {
           newGrid[row + y][col + x] = shape;
         }
       }
     }
   }
-  return { grid: newGrid, gameOver: blockOffGrid };
+  return { newGrid, gameOver };
 };
 
 export const checkRows = (grid) => {

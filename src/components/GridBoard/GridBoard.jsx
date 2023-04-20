@@ -1,18 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { shapes } from "../../utils";
-import { moveDown } from "../../features/game/gameSlice";
 import GridSquare from "../GridSquare/GridSquare";
 
 export default function GridBoard() {
-  const requestRef = useRef();
-  const lastUpdateTimeRef = useRef(0);
-  const progressTimeRef = useRef(0);
-  const dispatch = useDispatch();
-
-  const { grid, shape, rotation, x, y, isRunning, speed, gameOver } =
-    useSelector((state) => state);
-
+  const { grid, shape, rotation, x, y } = useSelector((state) => state);
   const block = shapes[shape][rotation];
   const blockColor = shape;
 
@@ -36,28 +28,6 @@ export default function GridBoard() {
       return <GridSquare key={key} color={color} />;
     });
   });
-
-  const update = (time) => {
-    requestRef.current = requestAnimationFrame(update);
-    if (!isRunning || gameOver) {
-      return;
-    }
-    if (!lastUpdateTimeRef.current) {
-      lastUpdateTimeRef.current = time;
-    }
-    const deltaTime = time - lastUpdateTimeRef.current;
-    progressTimeRef.current += deltaTime;
-    if (progressTimeRef.current > speed) {
-      dispatch(moveDown(1));
-      progressTimeRef.current = 0;
-    }
-    lastUpdateTimeRef.current = time;
-  };
-
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(requestRef.current);
-  }, [isRunning]);
 
   return <div className="grid-board">{gridSquares}</div>;
 }

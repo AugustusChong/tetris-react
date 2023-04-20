@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   moveLeft,
@@ -10,7 +10,32 @@ import "../../styles/game.css";
 
 export default function Controls() {
   const dispatch = useDispatch();
-  const { isRunning, gameOver } = useSelector((state) => state);
+  const { isRunning, gameOver, speed } = useSelector((state) => state);
+  const requestRef = useRef();
+  const lastUpdateTimeRef = useRef(0);
+  const progressTimeRef = useRef(0);
+
+  const update = (time) => {
+    requestRef.current = requestAnimationFrame(update);
+    if (!isRunning || gameOver) {
+      return;
+    }
+    if (!lastUpdateTimeRef.current) {
+      lastUpdateTimeRef.current = time;
+    }
+    const deltaTime = time - lastUpdateTimeRef.current;
+    progressTimeRef.current += deltaTime;
+    if (progressTimeRef.current > speed) {
+      dispatch(moveDown(1));
+      progressTimeRef.current = 0;
+    }
+    lastUpdateTimeRef.current = time;
+  };
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [isRunning]);
 
   const handleKeyPress = (e) => {
     switch (e.keyCode) {

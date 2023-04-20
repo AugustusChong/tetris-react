@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { produce } from "immer";
 import {
-  gridDefault,
   defaultState,
   canMoveTo,
   nextRotation,
@@ -16,108 +14,67 @@ export const gameSlice = createSlice({
   reducers: {
     run: (state, action) => {
       state.isRunning = action.payload;
+      return state;
     },
-    restart: (state, action) => {
-      return defaultState();
-    },
+    restart: (state, action) => defaultState(),
     moveRight: (state, action) => {
       const { shape, grid, x, y, rotation } = state;
-      if (canMoveTo(shape, grid, x + 1, y, rotation)) {
-        return {
-          ...state,
-          x: x + action.payload,
-        };
+      if (canMoveTo(shape, grid, x + action.payload, y, rotation)) {
+        state.x = x + action.payload;
       }
+      return state;
     },
     moveLeft: (state, action) => {
       const { shape, grid, x, y, rotation } = state;
-      if (canMoveTo(shape, grid, x - 1, y, rotation)) {
-        return {
-          ...state,
-          x: x - action.payload,
-        };
+      if (canMoveTo(shape, grid, x - action.payload, y, rotation)) {
+        state.x = x - action.payload;
       }
+      return state;
     },
     moveDown: (state, action) => {
-      const {
-        shape,
-        grid,
-        x,
-        y,
-        rotation,
-        nextShape,
-        isRunning,
-        score,
-        speed,
-        rowsCompleted,
-      } = state;
+      const { shape, grid, x, y, rotation, nextShape } = state;
       const potentialY = y + action.payload;
 
       if (canMoveTo(shape, grid, x, potentialY, rotation)) {
-        return {
-          ...state,
-          y: potentialY,
-        };
+        state.y = potentialY;
+        return state;
       }
 
-      const obj = addBlockToGrid(shape, grid, x, y, rotation);
-      const newGrid = obj.grid;
-      const gameOver = obj.gameOver;
+      const { newGrid, gameOver } = addBlockToGrid(shape, grid, x, y, rotation);
 
       if (gameOver) {
-        const newState = { ...state };
-        newState.shape = 0;
-        newState.grid = newGrid;
-        return {
-          ...state,
-          gameOver: true,
-        };
+        state.gameOver = true;
+        return state;
       }
 
-      // const newState = defaultState();
-      // newState.grid = newGrid;
-      // newState.shape = nextShape;
-      // newState.isRunning = isRunning;
-      // newState.score = score + checkRows(newGrid);
-      // return newState;
+      state.x = 3;
+      state.y = -4;
+      state.rotation = 0;
+      state.grid = newGrid;
+      state.shape = nextShape;
+      state.nextShape = randomShape();
 
-      return produce(state, (draftState) => {
-        draftState = defaultState();
-        draftState.grid = newGrid;
-        draftState.shape = nextShape;
-        draftState.isRunning = isRunning;
-        draftState.score = score + checkRows(newGrid);
-      });
+      if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
+        state.shape = 0;
+        state.gameOver = true;
+        return state;
+      }
 
-      // return {
-      //   ...state,
-      //   grid: newGrid,
-      //   shape: nextShape,
-      //   isRunning: isRunning,
-      //   score: score + checkRows(newGrid),
-      //   rotation: 0,
-      //   x: 5,
-      //   y: -4,
-      //   nextShape: randomShape(),
-      //   speed: speed + 50,
-      //   gameOver: false,
-      //   rowsCompleted: rowsCompleted + 1,
-      // };
+      state.score += checkRows(newGrid);
+      return state;
     },
     rotate: (state, action) => {
       const { shape, grid, x, y, rotation } = state;
       const newRotation = nextRotation(shape, rotation);
       if (canMoveTo(shape, grid, x, y, newRotation)) {
-        return {
-          ...state,
-          rotation: newRotation,
-        };
+        state.rotation = newRotation;
       }
+      return state;
     },
   },
 });
 
-export const { moveRight, moveLeft, rotate, moveDown, run, restart } =
+export const { moveRight, moveLeft, moveDown, rotate, run, restart } =
   gameSlice.actions;
 
 export default gameSlice.reducer;
