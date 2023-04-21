@@ -32,7 +32,7 @@ export const gameSlice = createSlice({
       return state;
     },
     moveDown: (state, action) => {
-      const { shape, grid, x, y, rotation, nextShape } = state;
+      const { shape, grid, x, y, rotation, nextShape, rowsCompleted } = state;
       const potentialY = y + action.payload;
 
       if (canMoveTo(shape, grid, x, potentialY, rotation)) {
@@ -61,8 +61,10 @@ export const gameSlice = createSlice({
       }
 
       const { score, completedRows } = checkRows(newGrid);
+      const newRowsCompleted = rowsCompleted + completedRows;
       state.score += score;
-      state.rowsCompleted += completedRows;
+      state.rowsCompleted = newRowsCompleted;
+      state.level = Math.floor(newRowsCompleted / 10) + 1;
       return state;
     },
     rotate: (state, action) => {

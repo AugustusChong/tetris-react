@@ -5,7 +5,7 @@ import "../../styles/game.css";
 
 export default function ScoreBoard() {
   const dispatch = useDispatch();
-  const { score, isRunning, gameOver, rowsCompleted } = useSelector(
+  const { score, isRunning, gameOver, rowsCompleted, level } = useSelector(
     (state) => state
   );
 
@@ -13,7 +13,8 @@ export default function ScoreBoard() {
     <React.Fragment>
       <div className="score-board">
         <div>Score:{score}</div>
-        <div>Level:{rowsCompleted}</div>
+        <div>Level:{level}</div>
+        <div>Lines:{rowsCompleted}</div>
       </div>
       <div className="score-board-buttons">
         <button

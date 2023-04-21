@@ -266,5 +266,6 @@ export const defaultState = () => {
     speed: 1000,
     gameOver: false,
     rowsCompleted: 0,
+    level: 1,
   };
 };
