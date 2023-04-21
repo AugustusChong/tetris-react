@@ -32,39 +32,35 @@ export const gameSlice = createSlice({
       return state;
     },
     moveDown: (state, action) => {
-      const { shape, grid, x, y, rotation, nextShape, rowsCompleted } = state;
+      const { shape, grid, x, y, rotation, nextShape, rowsCompleted, speed } =
+        state;
       const potentialY = y + action.payload;
-
       if (canMoveTo(shape, grid, x, potentialY, rotation)) {
         state.y = potentialY;
         return state;
       }
-
       const { newGrid, gameOver } = addBlockToGrid(shape, grid, x, y, rotation);
-
       if (gameOver) {
         state.gameOver = true;
         return state;
       }
-
       state.x = 3;
       state.y = -4;
       state.rotation = 0;
       state.grid = newGrid;
       state.shape = nextShape;
       state.nextShape = randomShape();
-
       if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
         state.shape = 0;
         state.gameOver = true;
         return state;
       }
-
       const { score, completedRows } = checkRows(newGrid);
       const newRowsCompleted = rowsCompleted + completedRows;
       state.score += score;
       state.rowsCompleted = newRowsCompleted;
       state.level = Math.floor(newRowsCompleted / 10) + 1;
+      state.speed = Math.max(speed - completedRows * 10, 50);
       return state;
     },
     rotate: (state, action) => {

@@ -6,19 +6,16 @@ export const gridDefault = () => {
   const rows = 18;
   const cols = 10;
   const array = [];
-
   for (let row = 0; row < rows; row++) {
     array.push([]);
     for (let col = 0; col < cols; col++) {
       array[row].push(0);
     }
   }
-
   return array;
 };
 
 export const shapes = [
-  // none
   [
     [
       [0, 0, 0, 0],
@@ -27,8 +24,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // I
   [
     [
       [0, 0, 0, 0],
@@ -44,8 +39,6 @@ export const shapes = [
       [0, 1, 0, 0],
     ],
   ],
-
-  // T
   [
     [
       [0, 0, 0, 0],
@@ -75,8 +68,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // L
   [
     [
       [0, 0, 0, 0],
@@ -106,8 +97,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // J
   [
     [
       [1, 0, 0, 0],
@@ -137,8 +126,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // Z
   [
     [
       [0, 0, 0, 0],
@@ -154,8 +141,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // S
   [
     [
       [0, 0, 0, 0],
@@ -171,8 +156,6 @@ export const shapes = [
       [0, 0, 0, 0],
     ],
   ],
-
-  // O
   [
     [
       [0, 1, 1, 0],
@@ -195,14 +178,12 @@ export const canMoveTo = (shape, grid, x, y, rotation) => {
   const currentShape = shapes[shape][rotation];
   const gridWidth = grid[0].length - 1;
   const gridHeight = grid.length - 1;
-
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
       if (currentShape[row][col] !== 0) {
         const proposedX = col + x;
         const proposedY = row + y;
         const possibleRow = grid[proposedY];
-
         if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
           return false;
         } else if (possibleRow !== undefined) {
@@ -220,12 +201,10 @@ export const addBlockToGrid = (shape, grid, x, y, rotation) => {
   let gameOver = false;
   const block = shapes[shape][rotation];
   const newGrid = [...grid];
-
   for (let row = 0; row < block.length; row++) {
     for (let col = 0; col < block[row].length; col++) {
       if (block[row][col]) {
         const yIndex = row + y;
-
         if (yIndex < 0) {
           gameOver = true;
         } else {
@@ -240,7 +219,6 @@ export const addBlockToGrid = (shape, grid, x, y, rotation) => {
 export const checkRows = (grid) => {
   const points = [0, 40, 100, 300, 1200];
   let completedRows = 0;
-
   for (let row = 0; row < grid.length; row++) {
     if (grid[row].indexOf(0) === -1) {
       completedRows += 1;
@@ -248,7 +226,6 @@ export const checkRows = (grid) => {
       grid.unshift(Array(10).fill(0));
     }
   }
-
   const score = points[completedRows];
   return { score, completedRows };
 };
