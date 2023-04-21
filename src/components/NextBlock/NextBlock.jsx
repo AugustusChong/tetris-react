@@ -5,9 +5,9 @@ import GridSquare from "../GridSquare/GridSquare";
 
 export default function NextBlock() {
   const nextShape = useSelector((state) => state.nextShape);
-  const tetrominoe = shapes[nextShape][0];
+  const tetromino = shapes[nextShape][0];
 
-  const grid = tetrominoe.map((rowArray, row) => {
+  const grid = tetromino.map((rowArray, row) => {
     return rowArray.map((square, col) => {
       const color = square ? nextShape : 0;
       return <GridSquare key={`${row}${col}`} color={color} />;
