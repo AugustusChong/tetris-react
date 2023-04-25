@@ -1,3 +1,5 @@
 # Tetris React
+This is a Tetris clone with a scoreboard and keyboard controls. 
 
-### Tetris game made with React Redux
+## Tech/Framework Used
+Built with React, Redux Toolkit, SASS.
