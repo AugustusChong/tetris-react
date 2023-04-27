@@ -175,7 +175,6 @@ export const nextRotation = (shape, rotation) => {
 };
 
 export const canMoveTo = (shape, grid, x, y, rotation) => {
-  console.log("canMoveTo", shape, grid, x, y, rotation);
   const currentShape = shapes[shape][rotation];
   const gridWidth = grid[0].length - 1;
   const gridHeight = grid.length - 1;
@@ -186,19 +185,15 @@ export const canMoveTo = (shape, grid, x, y, rotation) => {
         const proposedY = row + y;
         const possibleRow = grid[proposedY];
         if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
-          console.log("canMoveTo false");
           return false;
-        }
-        if (possibleRow !== undefined) {
+        } else if (possibleRow !== undefined) {
           if (possibleRow[proposedX] !== 0) {
-            console.log("canMoveTo false");
             return false;
           }
         }
       }
     }
   }
-  console.log("canMoveTo true");
   return true;
 };
 
