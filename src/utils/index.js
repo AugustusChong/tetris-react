@@ -31,7 +31,6 @@ export const shapes = [
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [0, 1, 0, 0],
@@ -46,21 +45,18 @@ export const shapes = [
       [0, 1, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [1, 1, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [1, 1, 1, 0],
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [0, 1, 1, 0],
@@ -75,21 +71,18 @@ export const shapes = [
       [1, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [1, 1, 0, 0],
       [0, 1, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 0, 1, 0],
       [1, 1, 1, 0],
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [0, 1, 0, 0],
@@ -104,21 +97,18 @@ export const shapes = [
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 1, 0],
       [0, 1, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 0, 0, 0],
       [1, 1, 1, 0],
       [0, 0, 1, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [0, 1, 0, 0],
@@ -133,7 +123,6 @@ export const shapes = [
       [0, 1, 1, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 0, 1, 0],
       [0, 1, 1, 0],
@@ -148,7 +137,6 @@ export const shapes = [
       [1, 1, 0, 0],
       [0, 0, 0, 0],
     ],
-
     [
       [0, 1, 0, 0],
       [0, 1, 1, 0],
@@ -176,15 +164,19 @@ export const nextRotation = (shape, rotation) => {
 
 export const canMoveTo = (shape, grid, x, y, rotation) => {
   const currentShape = shapes[shape][rotation];
-  const gridWidth = grid[0].length - 1;
-  const gridHeight = grid.length - 1;
+  const gridWidth = grid[0].length;
+  const gridHeight = grid.length;
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
       if (currentShape[row][col] !== 0) {
         const proposedX = col + x;
         const proposedY = row + y;
         const possibleRow = grid[proposedY];
-        if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
+        if (
+          proposedX < 0 ||
+          proposedX > gridWidth - 1 ||
+          proposedY > gridHeight - 1
+        ) {
           return false;
         } else if (possibleRow !== undefined) {
           if (possibleRow[proposedX] !== 0) {

@@ -42,6 +42,7 @@ export const gameSlice = createSlice({
       const { newGrid, gameOver } = addBlockToGrid(shape, grid, x, y, rotation);
       if (gameOver) {
         state.gameOver = true;
+        state.isRunning = false;
         return state;
       }
       state.x = 3;
@@ -50,11 +51,12 @@ export const gameSlice = createSlice({
       state.grid = newGrid;
       state.shape = nextShape;
       state.nextShape = randomShape();
-      if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
-        state.shape = 0;
-        state.gameOver = true;
-        return state;
-      }
+      // if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
+      //   state.shape = 0;
+      //   state.gameOver = true;
+      //   state.isRunning = false;
+      //   return state;
+      // }
       const { score, completedRows } = checkRows(newGrid);
       const newRowsCompleted = rowsCompleted + completedRows;
       state.score += score;

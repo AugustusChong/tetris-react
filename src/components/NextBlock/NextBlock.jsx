@@ -4,13 +4,14 @@ import { shapes } from "../../utils";
 import GridSquare from "../GridSquare/GridSquare";
 
 export default function NextBlock() {
-  const nextShape = useSelector((state) => state.nextShape);
+  const { nextShape } = useSelector((state) => state);
   const tetromino = shapes[nextShape][0];
 
   const grid = tetromino.map((rowArray, row) => {
     return rowArray.map((square, col) => {
-      const color = square ? nextShape : 0;
-      return <GridSquare key={`${row}${col}`} color={color} />;
+      return (
+        <GridSquare key={`${row}${col}`} color={square === 0 ? 0 : nextShape} />
+      );
     });
   });
 
