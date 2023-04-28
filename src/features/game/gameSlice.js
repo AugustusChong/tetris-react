@@ -75,21 +75,25 @@ export const gameSlice = createSlice({
       return state;
     },
     holdBlock: (state, action) => {
-      const { shape, heldShape, canSwap } = state;
-      if (!canSwap) {
-        return state;
-      }
-      if (heldShape === 0) {
-        state.heldShape = shape;
-        state.shape = state.nextShape;
-        state.nextShape = randomShape();
-        state.canSwap = false;
+      const { shape, heldShape, canSwap, isRunning } = state;
+      if (!isRunning) {
         return state;
       } else {
-        state.heldShape = shape;
-        state.shape = heldShape;
-        state.canSwap = false;
-        return state;
+        if (!canSwap) {
+          return state;
+        }
+        if (heldShape === 0) {
+          state.heldShape = shape;
+          state.shape = state.nextShape;
+          state.nextShape = randomShape();
+          state.canSwap = false;
+          return state;
+        } else {
+          state.heldShape = shape;
+          state.shape = heldShape;
+          state.canSwap = false;
+          return state;
+        }
       }
     },
   },
