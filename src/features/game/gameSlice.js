@@ -75,7 +75,7 @@ export const gameSlice = createSlice({
       return state;
     },
     holdBlock: (state, action) => {
-      const { shape, heldShape, canSwap, isRunning } = state;
+      const { shape, heldShape, canSwap, isRunning, grid, x, y } = state;
       if (!isRunning) {
         return state;
       } else {
@@ -87,12 +87,16 @@ export const gameSlice = createSlice({
           state.shape = state.nextShape;
           state.nextShape = randomShape();
           state.canSwap = false;
+          state.rotation = 0;
           return state;
         } else {
-          state.heldShape = shape;
-          state.shape = heldShape;
-          state.canSwap = false;
-          return state;
+          if (canMoveTo(heldShape, grid, x, y, 0)) {
+            state.heldShape = shape;
+            state.shape = heldShape;
+            state.canSwap = false;
+            state.rotation = 0;
+            return state;
+          }
         }
       }
     },
