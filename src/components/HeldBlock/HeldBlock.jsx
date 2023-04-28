@@ -15,5 +15,10 @@ export default function HeldBlock() {
     });
   });
 
-  return <div className="held-block">{grid}</div>;
+  return (
+    <div className="block-container held-container">
+      <h3 className="block-header">Hold</h3>
+      <div className="held-block">{grid}</div>
+    </div>
+  );
 }

@@ -78,12 +78,31 @@
   grid-area: c;
 }
 
+.block-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.block-header {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.next-container {
+  grid-area: r;
+}
+
 .next-block {
   display: grid;
   gap: 1px;
   grid-template-columns: repeat(4, var(--tile-size));
   align-self: flex-start;
   grid-area: r;
+}
+
+.held-container {
+  grid-area: l;
 }
 
 .held-block {

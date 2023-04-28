@@ -15,5 +15,10 @@ export default function NextBlock() {
     });
   });
 
-  return <div className="next-block">{grid}</div>;
+  return (
+    <div className="block-container next-container">
+      <h3 className="block-header">Next</h3>
+      <div className="next-block">{grid}</div>
+    </div>
+  );
 }

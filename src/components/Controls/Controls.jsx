@@ -57,7 +57,6 @@ export default function Controls() {
         document.getElementById("downButton").click();
         break;
       case 67:
-        e.preventDefault();
         dispatch(holdBlock());
       default:
         break;
