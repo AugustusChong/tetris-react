@@ -116,7 +116,10 @@
 .score-board {
   grid-area: bl;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid black;
 }
 
 .score-board-buttons {
