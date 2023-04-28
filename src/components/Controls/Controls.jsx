@@ -5,6 +5,7 @@ import {
   moveRight,
   moveDown,
   rotate,
+  holdBlock,
 } from "../../features/game/gameSlice";
 import "../../styles/game.css";
 
@@ -55,6 +56,9 @@ export default function Controls() {
         e.preventDefault();
         document.getElementById("downButton").click();
         break;
+      case 67:
+        e.preventDefault();
+        dispatch(holdBlock());
       default:
         break;
     }

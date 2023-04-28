@@ -37,6 +37,7 @@ export const gameSlice = createSlice({
       const potentialY = y + action.payload;
       if (canMoveTo(shape, grid, x, potentialY, rotation)) {
         state.y = potentialY;
+        state.canSwap = true;
         return state;
       }
       const { newGrid, gameOver } = addBlockToGrid(shape, grid, x, y, rotation);
@@ -73,10 +74,35 @@ export const gameSlice = createSlice({
       }
       return state;
     },
+    holdBlock: (state, action) => {
+      const { shape, heldShape, canSwap } = state;
+      if (!canSwap) {
+        return state;
+      }
+      if (heldShape === null) {
+        state.heldShape = shape;
+        state.shape = state.nextShape;
+        state.nextShape = randomShape();
+        state.canSwap = false;
+        return state;
+      } else {
+        state.heldShape = shape;
+        state.shape = heldShape;
+        state.canSwap = false;
+        return state;
+      }
+    },
   },
 });
 
-export const { moveRight, moveLeft, moveDown, rotate, run, restart } =
-  gameSlice.actions;
+export const {
+  run,
+  restart,
+  moveRight,
+  moveLeft,
+  moveDown,
+  rotate,
+  holdBlock,
+} = gameSlice.actions;
 
 export default gameSlice.reducer;
