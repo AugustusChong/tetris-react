@@ -79,7 +79,7 @@ export const gameSlice = createSlice({
       if (!canSwap) {
         return state;
       }
-      if (heldShape === null) {
+      if (heldShape === 0) {
         state.heldShape = shape;
         state.shape = state.nextShape;
         state.nextShape = randomShape();

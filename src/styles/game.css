@@ -86,6 +86,14 @@
   grid-area: r;
 }
 
+.held-block {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, var(--tile-size));
+  align-self: flex-start;
+  grid-area: l;
+}
+
 .controls {
   grid-area: bc;
   display: flex;

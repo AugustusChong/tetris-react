@@ -236,7 +236,7 @@ export const defaultState = () => {
     gameOver: false,
     rowsCompleted: 0,
     level: 1,
-    heldShape: null,
+    heldShape: 0,
     canSwap: true,
   };
 };
