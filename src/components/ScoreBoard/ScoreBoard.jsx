@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPause, faPlay, faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { run, restart } from "../../features/game/gameSlice";
 import "../../styles/game.css";
 
@@ -30,7 +32,11 @@ export default function ScoreBoard() {
             }
           }}
         >
-          {isRunning ? "Pause" : "Play"}
+          {isRunning ? (
+            <FontAwesomeIcon icon={faPause} size="lg" />
+          ) : (
+            <FontAwesomeIcon icon={faPlay} size="lg" />
+          )}
         </button>
         <button
           className="score-board-button"
@@ -38,7 +44,7 @@ export default function ScoreBoard() {
             dispatch(restart());
           }}
         >
-          Restart
+          <FontAwesomeIcon icon={faPowerOff} size="lg" />
         </button>
       </div>
     </React.Fragment>

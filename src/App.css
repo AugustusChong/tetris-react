@@ -34,6 +34,14 @@
   grid-area: h;
 }
 
+.App-title {
+  font-weight: bolder;
+  -webkit-animation: animate_bg 5s;
+  animation: animate_bg 5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -44,6 +52,58 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes animate_bg {
+  0% {
+    color: #eaeaea;
+  }
+  14% {
+    color: #80bfe6;
+  }
+  28% {
+    color: #ac41ad;
+  }
+  42% {
+    color: #efb36e;
+  }
+  56% {
+    color: #2f71c1;
+  }
+  70% {
+    color: #e36967;
+  }
+  84% {
+    color: #8ac57a;
+  }
+  100% {
+    color: #ffe831;
+  }
+}
+@-webkit-keyframes animate_bg {
+  0% {
+    color: #eaeaea;
+  }
+  14% {
+    color: #80bfe6;
+  }
+  28% {
+    color: #ac41ad;
+  }
+  42% {
+    color: #efb36e;
+  }
+  56% {
+    color: #2f71c1;
+  }
+  70% {
+    color: #e36967;
+  }
+  84% {
+    color: #8ac57a;
+  }
+  100% {
+    color: #ffe831;
   }
 }
 

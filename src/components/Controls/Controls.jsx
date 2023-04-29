@@ -1,5 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCaretLeft,
+  faCaretRight,
+  faCaretDown,
+  faRotateRight,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   moveLeft,
   moveRight,
@@ -83,7 +90,7 @@ export default function Controls() {
           dispatch(moveLeft(1));
         }}
       >
-        Left
+        <FontAwesomeIcon icon={faCaretLeft} size="2xl" />
       </button>
 
       <button
@@ -97,7 +104,7 @@ export default function Controls() {
           dispatch(moveRight(1));
         }}
       >
-        Right
+        <FontAwesomeIcon icon={faCaretRight} size="2xl" />
       </button>
 
       <button
@@ -111,7 +118,7 @@ export default function Controls() {
           dispatch(rotate());
         }}
       >
-        Rotate
+        <FontAwesomeIcon icon={faRotateRight} size="2xl" />
       </button>
 
       <button
@@ -125,7 +132,7 @@ export default function Controls() {
           dispatch(moveDown(1));
         }}
       >
-        Down
+        <FontAwesomeIcon icon={faCaretDown} size="2xl" />
       </button>
     </div>
   );

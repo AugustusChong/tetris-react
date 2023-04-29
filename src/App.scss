@@ -1,3 +1,12 @@
+$color-0: #eaeaea;
+$color-1: #80bfe6;
+$color-2: #ac41ad;
+$color-3: #efb36e;
+$color-4: #2f71c1;
+$color-5: #e36967;
+$color-6: #8ac57a;
+$color-7: #ffe831;
+
 .App {
   --col-side: calc((var(--tile-size) * 4) + 4px);
   --col-center: calc((var(--tile-size) * 10) + 10px);
@@ -38,6 +47,14 @@
   grid-area: h;
 }
 
+.App-title {
+  font-weight: bolder;
+  -webkit-animation: animate_bg 5s;
+  animation: animate_bg 5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -48,5 +65,59 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes animate_bg {
+  0% {
+    color: $color-0;
+  }
+  14% {
+    color: $color-1;
+  }
+  28% {
+    color: $color-2;
+  }
+  42% {
+    color: $color-3;
+  }
+  56% {
+    color: $color-4;
+  }
+  70% {
+    color: $color-5;
+  }
+  84% {
+    color: $color-6;
+  }
+  100% {
+    color: $color-7;
+  }
+}
+
+@-webkit-keyframes animate_bg {
+  0% {
+    color: $color-0;
+  }
+  14% {
+    color: $color-1;
+  }
+  28% {
+    color: $color-2;
+  }
+  42% {
+    color: $color-3;
+  }
+  56% {
+    color: $color-4;
+  }
+  70% {
+    color: $color-5;
+  }
+  84% {
+    color: $color-6;
+  }
+  100% {
+    color: $color-7;
   }
 }
