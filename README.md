@@ -6,9 +6,9 @@ Built with React, Redux Toolkit, SASS.
 
 ## Controls
 <pre>
-Left Arrow:  Move Left </br>
-Right Arrow: Move Right </br>
-Down Arrow:  Move Down </br>
-Up Arrow:    Rotate </br>
-C:           Hold/Switch Tetromino </br>
+Left Arrow:  Move Left
+Right Arrow: Move Right
+Down Arrow:  Move Down
+Up Arrow:    Rotate
+C:           Hold/Switch Tetromino
 </pre>
