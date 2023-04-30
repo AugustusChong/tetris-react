@@ -75,8 +75,9 @@ export const gameSlice = createSlice({
       return state;
     },
     holdBlock: (state, action) => {
-      const { shape, heldShape, canSwap, isRunning, grid, x, y } = state;
-      if (!isRunning) {
+      const { shape, heldShape, canSwap, isRunning, grid, x, y, gameOver } =
+        state;
+      if (!isRunning || gameOver) {
         return state;
       } else {
         if (!canSwap) {
