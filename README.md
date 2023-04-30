@@ -5,8 +5,10 @@ This is a Tetris clone with a scoreboard and keyboard controls.
 Built with React, Redux Toolkit, SASS.
 
 ## Controls
+<pre>
 Left Arrow:  Move Left </br>
 Right Arrow: Move Right </br>
 Down Arrow:  Move Down </br>
 Up Arrow:    Rotate </br>
 C:           Hold/Switch Tetromino </br>
+</pre>
