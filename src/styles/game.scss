@@ -119,8 +119,6 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 1px solid black;
-  border-radius: 12%;
 }
 
 .score-board-buttons {
@@ -162,4 +160,52 @@
 
 .message-popup.hidden {
   display: none;
+}
+
+.score-border {
+  background: white;
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+  z-index: -1;
+  bottom: 50px;
+  border-radius: 12%;
+}
+
+.score-border::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  background-image: linear-gradient(
+    90deg,
+    #fde100,
+    #ea9b40,
+    #56aadd,
+    #db3e3c,
+    #255998,
+    #6bb557,
+    #ac41ad
+  );
+  height: 150%;
+  animation: rotateBGImage 3s linear infinite;
+  transition: all 0.2s linear;
+  z-index: -1;
+}
+
+.score-border::after {
+  content: "";
+  position: absolute;
+  background: white;
+  inset: 5px;
+  z-index: -1;
+  border-radius: 12%;
+}
+
+@keyframes rotateBGImage {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

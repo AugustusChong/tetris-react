@@ -43,7 +43,7 @@ export default function Controls() {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(update);
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isRunning]);
+  });
 
   const handleKeyPress = (e) => {
     switch (e.keyCode) {
@@ -65,6 +65,7 @@ export default function Controls() {
         break;
       case 67:
         dispatch(holdBlock());
+        break;
       default:
         break;
     }
@@ -75,7 +76,7 @@ export default function Controls() {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  });
 
   return (
     <div className="controls">

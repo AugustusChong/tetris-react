@@ -12,11 +12,23 @@ export default function ScoreBoard() {
   );
 
   return (
-    <React.Fragment>
-      <div className="score-board">
-        <div>Score:{score}</div>
-        <div>Level:{level}</div>
-        <div>Lines:{rowsCompleted}</div>
+    <>
+      <div className="score-board score-border">
+        <div>
+          Score:
+          <br />
+          {score}
+        </div>
+        <div>
+          Level:
+          <br />
+          {level}
+        </div>
+        <div>
+          Lines:
+          <br />
+          {rowsCompleted}
+        </div>
       </div>
       <div className="score-board-buttons">
         <button
@@ -47,6 +59,6 @@ export default function ScoreBoard() {
           <FontAwesomeIcon icon={faPowerOff} size="lg" />
         </button>
       </div>
-    </React.Fragment>
+    </>
   );
 }
