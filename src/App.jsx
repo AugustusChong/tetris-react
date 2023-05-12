@@ -6,20 +6,24 @@ import ScoreBoard from "./components/ScoreBoard/ScoreBoard";
 import Controls from "./components/Controls/Controls";
 import MessagePopup from "./components/MessagePopup/MessagePopup";
 import HeldBlock from "./components/HeldBlock/HeldBlock";
+import ParticleBackground from "./components/ParticleBackground/ParticleBackground";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Tetris Redux</h1>
-      </header>
-      <GridBoard />
-      <NextBlock />
-      <HeldBlock />
-      <ScoreBoard />
-      <Controls />
-      <MessagePopup />
-    </div>
+    <>
+      <ParticleBackground />
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Tetris Redux</h1>
+        </header>
+        <GridBoard />
+        <NextBlock />
+        <HeldBlock />
+        <ScoreBoard />
+        <Controls />
+        <MessagePopup />
+      </div>
+    </>
   );
 }
 
