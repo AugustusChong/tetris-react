@@ -87,6 +87,7 @@
 .block-header {
   margin-top: 0;
   margin-bottom: 0;
+  color: #fff;
 }
 
 .next-container {
@@ -173,7 +174,7 @@
   position: relative;
   left: 0;
   top: 0;
-  transform: translate(54%, -380%);
+  transform: translate(54%, -377%);
   width: 200px;
   height: 100px;
   background-color: rgba(255, 255, 255, 0.5019607843);
@@ -212,6 +213,7 @@
   inset: 5px;
   z-index: -1;
   border-radius: 12%;
+  border-style: inset;
 }
 
 @keyframes rotateBGImage {
