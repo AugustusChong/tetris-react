@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <ParticleBackground />
-      <div className="App">
+      <div className="App unselectable">
         <header className="App-header">
           <h1 className="App-title">Tetris Redux</h1>
         </header>
