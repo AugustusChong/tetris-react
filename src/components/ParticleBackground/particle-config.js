@@ -78,7 +78,7 @@ export const particleConfig = {
       trail: {
         delay: 0,
         quantity: 7,
-        pauseOnStop: false,
+        pauseOnStop: true,
       },
     },
   },
