@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.37.0"],\
             ["eslint-config-react-app", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:7.0.1"],\
             ["immer", "npm:10.0.1"],\
+            ["lodash", "npm:4.17.21"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:18.2.0"],\
             ["react-particles", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:2.9.3"],\
@@ -18267,6 +18268,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.37.0"],\
             ["eslint-config-react-app", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:7.0.1"],\
             ["immer", "npm:10.0.1"],\
+            ["lodash", "npm:4.17.21"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:18.2.0"],\
             ["react-particles", "virtual:f20a26f3de7b3200aec5c3c836ecaf9f42b9abc52664bdc33b26797bae4ab6a6a769d136f413bb80086b68b997fcbefb2fddd66d8fc3e376f7726c37855aedb8#npm:2.9.3"],\
