@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-particles": "^2.9.3",
     "react-redux": "^8.0.5",
-    "react-scripts": "5.0.1",
+    "react-scripts": "~5.0.1",
     "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
   },
@@ -48,6 +48,7 @@
   "devDependencies": {
     "eslint": "^8.37.0",
     "eslint-config-react-app": "^7.0.1",
-    "tsparticles": "latest"
+    "tsparticles": "latest",
+    "webpack": "^5.83.1"
   }
 }
