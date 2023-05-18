@@ -12,3 +12,6 @@ Down Arrow:  Move Down
 Up Arrow:    Rotate
 C:           Hold/Switch Tetromino
 </pre>
+
+## Demo
+[Tetris Demo](https://augustuschong.github.io/tetris-react/)
